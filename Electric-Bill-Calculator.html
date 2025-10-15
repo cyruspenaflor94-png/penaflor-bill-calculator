@@ -41,7 +41,7 @@
             button {
                 width: 100%;
                 padding: 10px;
-                background: #06c4ca;
+                background: #15f04c;
                 color: #fff;
                 border: none;
                 border-radius: 5px;
@@ -82,7 +82,8 @@ table {
 
         <form onsubmit="event.preventDefault();">
 
-
+            <label>Month</label>
+            <input id="Month" type="text" /><br />
 
             <label>Power Consumption</label>
             <input id="power_consumption" type="number" /><br />
@@ -96,10 +97,18 @@ table {
 
         <div id="result"></div>
 
+                     <table id="tableRow">
+                    <tr>
+                        <td>Month</td>
+                        <td>Power Consumption</td>
+                        <td>Cost Per Kwh</td>
+                        <td>Result</td>
+                    </tr>
+            </table>
 
         <script>
             btn_calculate.addEventListener("click", function () {
-        
+                let Month = document.getElementById("Month");
                 let power_consumption =
                     document.getElementById("power_consumption");
                 let cost_per_kwh = document.getElementById("cost_per_kwh");
@@ -109,7 +118,18 @@ table {
                 result.innerHTML = `Your electric bill is: ₱ ${result_value.toFixed(
                     2
                 )}`;
-                
+                var tableRow = document.getElementById("tableRow");
+                var newRow = tableRow.insertRow();
+ 
+                var month = new Row.insertCell(0);
+                var Power_consumption = newRow.insertCell(1);
+                var Cost = newRow.insertCell(2);
+                var Result = newRow.insertCell(3);
+      
+                month.innerHTML = Month.value;
+                Power_consumption.innerHTML = power_consumption.value;
+                Cost.innerHTML = cost_per_kwh.value;
+                Result.innerHTML = result_value.toFixed(2);
             });
         </script>
     </body>
